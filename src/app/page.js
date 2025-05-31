@@ -1,10 +1,10 @@
-'use client';
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState("");
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -14,10 +14,10 @@ export default function Home() {
       setFileName(file.name);
     }
   };
-  
+
   const handleRemoveImage = () => {
     setSelectedImage(null);
-    setFileName('');
+    setFileName("");
   };
 
   const getCurrentTime = () => {
@@ -33,8 +33,8 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <header className="w-full bg-[#00a69c] p-4">
+    <div className="flex flex-col items-center bg-gray-100">
+      <header className="flex justify-between w-full bg-[#FF69B4] p-4">
         <div>
           <svg
             width="186"
@@ -103,13 +103,15 @@ export default function Home() {
             />
           </svg>
         </div>
+        <div className="text-gray-500">**핑크색 글씨 수정가능</div>
       </header>
-      <main className="p-4">
+
+      <main className="p-4 pb-20 mt-20 border border-gray-300 rounded-lg max-w-[1200px] bg-white">
         <h1>
           <input
             type="text"
-            placeholder="아바타 스타 슈 (활동명을 입력하시오...)"
-            className="w-full mb-2 text-3xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
+            placeholder="차일드니킥(Child Knee Kick)그룹명을 입력하시오..."
+            className="placeholder:text-[#FF69B4] w-full mb-2 text-3xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
           />
         </h1>
         <div className="text-sm">최근 수정 시각 : {getCurrentTime()}</div>
@@ -138,15 +140,15 @@ export default function Home() {
           <input
             type="text"
             placeholder="슈퍼스타 | CKK | 하드코어 펑크 (분류를 입력하시오)"
-            className="mx-2 flex-1 text-sm"
+            className="placeholder:text-[#FF69B4] mx-2 flex-1 text-sm"
           />
         </div>
 
         <div className="text-center flex flex-col justify-center items-center w-full h-40 border-[2px] my-4 bg-gray-200">
           <input
             type="text"
-            placeholder="(아바타 스타 슈)"
-            className="p-4 w-full text-center text-5xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
+            placeholder="바나니킥(활동명입력...)"
+            className="placeholder:text-[#FF69B4] p-4 w-full text-center text-5xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
           />
           <div className="w-1/2 flex justify-between p-2 font-black">
             <span>[ 앨범 ]</span>
@@ -188,58 +190,504 @@ export default function Home() {
             <h3 className="bg-black text-white p-4">
               <input
                 type="text"
-                placeholder="(아바타 스타 슈)"
-                className="text-center w-full text-centerw-full mb-2 text-3xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
+                placeholder="(바나니킥)"
+                className="placeholder:text-[#FF69B4] text-center w-full text-centerw-full mb-2 text-3xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
               />
               <input
                 type="text"
-                placeholder="(Avata Star Sue)"
-                className="text-center w-full mb-2 text-2xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
+                placeholder="(Banana Kick)"
+                className="placeholder:text-[#FF69B4] text-center w-full mb-2 text-2xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
               />
             </h3>
-            
-              {selectedImage && (
-                <div className="mb-4">
-                  
-                  <div className="w-full h-[400px] relative">
-                    <Image
-                      src={selectedImage}
-                      alt="프로필이미지"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-1 flex items-center justify-between mb-2">
-                    <button 
-                      onClick={handleRemoveImage}
-                      className="w-full text-right text-sm text-gray-400 mt-[-3em] mr-2 z-100"
-                    >
-                      프로필수정
-                    </button>
-                  </div>
-                </div>
-              )}
-              <input 
-                type="file" 
-                accept="image/*" 
+
+            {!selectedImage ? (
+              <input
+                type="file"
+                accept="image/*"
                 onChange={handleImageChange}
-                className="mb-4 w-full h-[400px] bg-gray-100"
+                className="mb-4 w-full h-[500px] bg-gray-100"
+                style={{
+                  backgroundImage:
+                    'url("https://i.namu.wiki/i/o3vv0umrN9a6M42G0yjlXYukEzduLf18gLaGB3jY5FJIhh9_Nc2Mgu08Gkej-KvVpGMhHyg8Xf3x2vRrI916dQ.webp")',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
               />
+            ) : (
+              <div className="mb-4">
+                <div className="w-full h-[500px] relative text-center">
+                  <Image
+                    src={selectedImage}
+                    alt="프로필이미지"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-1 flex items-center justify-between mb-2">
+                  <button
+                    onClick={handleRemoveImage}
+                    className="w-full text-right text-sm text-gray-400 mt-[-3em] mr-2 z-100"
+                  >
+                    프로필수정
+                  </button>
+                </div>
+              </div>
+            )}
             <ul>
-              <li>본명</li>
-              <li>애칭</li>
-              <li>출생</li>
-              <li>국적</li>
-              <li>신체</li>
-              <li>학력</li>
-              <li>가족</li>
-              <li>데뷔</li>
-              <li>MBTI</li>
-              
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  본명
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="장은아"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  애칭
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="응"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  출생
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="1998.02.11"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  국적
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="대한민국"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  신체
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="160cm, 51kg"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  학력
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="한국예술종합학교"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  가족
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="1남 1녀 중 장녀"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  데뷔
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="2025.6.1."
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
+              <li className="flex leading-loose border-b border-gray-300 border-gray-300">
+                <div className="flex-1 bg-black text-white text-center font-extrabold">
+                  MBTI
+                </div>
+                <div className="flex-4">
+                  <input
+                    type="text"
+                    placeholder="INTP"
+                    className="placeholder:text-[#FF69B4] mx-2"
+                  />
+                </div>
+              </li>
             </ul>
           </div>
         </div>
+
+        <article className="mt-[10vh]">
+          <ol>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                1. 개요
+              </h4>
+              <p>
+                <textarea
+                  placeholder="대한민국에서 활동하는 여성 인디 싱어송라이터. 데뷔 당시 미디어에서는 1인 프로젝트 밴드로 소개했다. 그러나 본인은 여러 매체와의 인터뷰에서 "
+                  className="placeholder:text-[#FF69B4] w-full min-h-40"
+                />
+              </p>
+            </li>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                2. 특징
+              </h4>
+              <p>
+                <textarea
+                  placeholder="바나니킥은 2000년대 초반 인터넷 밈 문화와 K-하이틴 감성을 기반으로 등장한 슈퍼스타로, 그의 음악은 싸이월드 BGM으로 쓰였을 법한 복고적인 신스팝과 시티팝, 그리고 최근 유행하는 하이퍼팝 요소들이 결합된 독특한 스타일을 지니며, 대표곡인 ‘노란맛’에서는 경쾌한 리듬과 과장된 효과음, 그리고 바나니킥 특유의 나른하면서도 유쾌한 보컬 톤이 어우러져 듣는 이로 하여금 일상에서 벗어난 일종의 가상현실적 쾌감을 선사하는 것이 특징이다."
+                  className="placeholder:text-[#FF69B4] min-h-40 w-full"
+                />
+              </p>
+            </li>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                3. 역사
+              </h4>
+
+              <ul>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2020년 8월: 첫 티저 영상 공개, 정체 불명 캐릭터로 입소문을 타기 시작함."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2021년 1월: 싱글 ‘노란맛’으로 정식 데뷔. 유튜브 조회수 1,000만 돌파."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2022년: 첫 미니 앨범 《Peel Me Now》 발매, ‘K-아이돌 가상 유닛’ 트렌드의 선두주자라는 평가를 받음."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2023년: 자체 제작 애니메이션 〈바나니킥 어드벤처〉 방영. "
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2024년: 글로벌 NFT 팬클럽 플랫폼 론칭, 해외 팬덤 급속 성장."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                4. 밴드 구성원
+              </h4>
+              <p>
+                <textarea
+                  placeholder="바나니킥은 원맨 캐릭터이지만, 라이브 공연 및 뮤직비디오에서는 고정 밴드와 댄서 팀이 함께한다."
+                  className="placeholder:text-[#FF69B4] min-h-12 w-full"
+                />
+              </p>
+              <ul>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="바나니킥 (Banani Kick) – 보컬, 콘셉트 총괄"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="DJ 무즈 (DJ M00Z) – 샘플링 & 라이브 믹스"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+              
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="퍼포머 ‘치키’ (Chiki) – 동반자이자 무대 안무 담당, 원숭이 캐릭터"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+              </ul>
+            </li>
+            <ol className="pl-8">
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  4.1. 이전 구성원
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="신맛이 (Shinmat-i) – 데뷔 초 라이브 키보디스트, 2022년 탈퇴"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+            </ol>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                5. 미디어
+              </h4>
+            </li>
+            <ol className="pl-8">
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  5.1. TV
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="《뮤직뱅크》, 《쇼! 음악중심》, 《엠카운트다운》 등 아이돌 음악 방송
+
+〈무한도전 : 뉴 레트로 특집〉 게스트 출연"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  5.2. 라디오
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="《배철수의 음악캠프》 출연, “요즘 귀여움도 진화한다”는 평
+
+《꿈꾸는 라디오》 고정 코너 ‘바나니킥의 노란 상담소’"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  5.3. 인터뷰
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="『DAZED KOREA』 2022년 3월호 커버
+
+『HYPEBEAST』 아시아 컬처 섹션 인터뷰: “나는 진심이야”"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  5.4. 기타 출연
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="유튜브 예능 《문명특급》, 《피식대학》
+
+광고 모델: 바나나킥 스낵, 레트로향 향수 브랜드 ‘Memoreal’"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+            </ol>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                6. 활동
+              </h4>
+            </li>
+            <ol className="pl-8">
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  6.1. 음반
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="2021.01: 싱글 〈노란맛〉
+
+2022.05: 미니앨범 《Peel Me Now》
+
+2023.11: 디지털 싱글 〈Soft Kick〉
+
+2024.06: 정규 앨범 《Yellow Fiction》"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  6.2. 프로듀싱
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="2022: 웹드라마 〈레트로러브〉 OST 프로듀싱
+
+2023: 비주얼 아티스트 ‘에그홀릭’의 전시 음원 공동 제작"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  6.3. 피쳐링
+                </h4>
+                <p>
+                  <textarea
+                    placeholder="2022: 『딸기소다』의 곡 〈톡톡소다팝〉
+
+2024: DJ 소바의 클럽 트랙 〈Banana Slip〉"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </p>
+              </li>
+              <li>
+                <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                  6.4. 공연
+                </h4>
+                <ul>
+                  <li className="list-disc ml-8">
+                    <input
+                      type="text"
+                      placeholder="2022: 첫 단독 콘서트 〈크리미 나이트〉"
+                      className="placeholder:text-[#FF69B4] w-full"
+                    />
+                  </li>
+                  <li className="list-disc ml-8">
+                    <input
+                      type="text"
+                      placeholder="2023: 일본 투어 〈Tokyo Peel〉"
+                      className="placeholder:text-[#FF69B4] w-full"
+                    />
+                  </li>
+                  <li className="list-disc ml-8">
+                    <input
+                      type="text"
+                      placeholder="2024: SXSW 초청 공연 (미국 텍사스 오스틴)"
+                      className="placeholder:text-[#FF69B4] w-full"
+                    />
+                  </li>
+                </ul>
+              </li>
+            </ol>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                7. 수상 경력
+              </h4>
+
+              <ul>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2021 멜론 뮤직 어워드 – 신인 캐릭터상"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2022 서울디자인페어 – 베스트 아이덴티티 콘셉트상"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="2023 애니콘 K-Pop 어워즈 – 비주얼 퍼포먼스상"
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h4 className="border-b p-4 my-6 border-gray-400 text-3xl font-bold">
+                8. 여담
+              </h4>
+              <ul>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="실제 바나나킥 과자와는 아무런 공식적 연관이 없으나, 과자 매출이 데뷔 이후 13% 증가했다는 비공식 보고가 있다."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="자주 쓰는 말인 “익을수록 달콤해진다”는 슬로건은 팬들 사이에서 인생 격언으로 회자됨."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="팬 아트, 코스프레, 2차 창작이 활발하며, 서브컬처 커뮤니티에서 밈의 원천으로 자주 언급된다."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+                <li className="list-disc ml-8">
+                  <input
+                    type="text"
+                    placeholder="종종 등장하는 앤드로이드 스타일의 ‘버그 바나니킥’ 캐릭터는 그 자체로 스핀오프 앨범 주인공이 되었다."
+                    className="placeholder:text-[#FF69B4] w-full"
+                  />
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </article>
       </main>
+
+      <footer className="flex justify-between mt-20 w-full text-xs border-t border-gray-300 bottom-0 p-2 my-8">
+        <div>© 2025 은아의 아이돌스타위키. 모든 권리 보유.</div>
+
+        <div>
+          <div>
+            문의{" "}
+            <a href="mailto:ajangeunajang@gmail.com?subject=은아의 발작룰렛 관련 문의 사항&body=안녕하세요,">
+              ajangeunajang@gmail.com
+            </a>
+          </div>
+          <div>
+            인스타그램{" "}
+            <a href="https://www.instagram.com/ajangeunajang" target="_blank">
+              @ajangeunajang
+            </a>
+          </div>
+        </div>
+        <div>
+          <div>슈비리두비루밥 샬랄랄라~♪</div>
+        </div>
+      </footer>
     </div>
   );
 }
