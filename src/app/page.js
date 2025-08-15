@@ -1,10 +1,10 @@
-"use client";
-import Image from "next/image";
-import { useState } from "react";
+'use client';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState('');
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -17,17 +17,17 @@ export default function Home() {
 
   const handleRemoveImage = () => {
     setSelectedImage(null);
-    setFileName("");
+    setFileName('');
   };
 
   const getCurrentTime = () => {
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   };
@@ -106,21 +106,21 @@ export default function Home() {
         <div className="text-gray-500">**핑크색 글씨 수정가능</div>
       </header>
 
-      <main className="p-4 pb-20 mt-20 border border-gray-300 rounded-lg max-w-[1200px] bg-white">
+      <main className="w-11/12 p-4 pb-20 mt-20 border border-gray-300 rounded-lg max-w-[1200px] bg-white">
         <h1>
           <input
             type="text"
-            placeholder="차일드니킥(Child Knee Kick)그룹명을 입력하시오..."
+            placeholder="차일드니킥(CKK)..그룹명 입력..."
             className="placeholder:text-[#FF69B4] w-full mb-2 text-3xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
           />
         </h1>
         <div className="text-sm">최근 수정 시각 : {getCurrentTime()}</div>
 
         {/* 광고 */}
-        <div className="p-8 w-full flex justify-center items-center">
+        <div className="p-8 w-full flex justify-center items-center overflow-hidden">
           <a target="_blank" href="https://www.cooperativeblue.com/">
             <svg
-              width="729"
+              width="450"
               height="90"
               viewBox="0 0 729 90"
               fill="none"
@@ -150,15 +150,15 @@ export default function Home() {
             placeholder="바나니킥(활동명입력...)"
             className="placeholder:text-[#FF69B4] p-4 w-full text-center text-5xl font-black border-gray-200 rounded-lg focus:outline-none focus:border-[#00a69c]"
           />
-          <div className="w-1/2 flex justify-between p-2 font-black">
+          <div className="sm:w-1/2 flex justify-between p-2 font-black">
             <span>[ 앨범 ]</span>
             <span>[ 관련문서 ]</span>
             <span>[ 싱글 ]</span>
           </div>
         </div>
 
-        <div className="flex">
-          <nav className="flex-1 border border-gray-200 p-4">
+        <div className="flex flex-col sm:flex-row">
+          <nav className="flex-1 border border-gray-200 p-4 w-1/2 mb-4">
             <h4 className="mb-4">목차</h4>
             <ol className="text-sm">
               <li>1. 개요</li>
@@ -186,7 +186,7 @@ export default function Home() {
               <li>8. 여담</li>
             </ol>
           </nav>
-          <div className="flex-3 border-[2px] ml-[30%]">
+          <div className="flex-3 border-[2px] sm:ml-[30%]">
             <h3 className="bg-black text-white p-4">
               <input
                 type="text"
@@ -209,9 +209,9 @@ export default function Home() {
                 style={{
                   backgroundImage:
                     'url("https://i.namu.wiki/i/o3vv0umrN9a6M42G0yjlXYukEzduLf18gLaGB3jY5FJIhh9_Nc2Mgu08Gkej-KvVpGMhHyg8Xf3x2vRrI916dQ.webp")',
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
                 }}
               />
             ) : (
@@ -254,7 +254,7 @@ export default function Home() {
                 <div className="flex-4">
                   <input
                     type="text"
-                    placeholder="응"
+                    placeholder="응, 앙, 잉, 개구리"
                     className="placeholder:text-[#FF69B4] mx-2"
                   />
                 </div>
@@ -290,7 +290,7 @@ export default function Home() {
                 <div className="flex-4">
                   <input
                     type="text"
-                    placeholder="160cm, 51kg"
+                    placeholder="190cm, 51kg"
                     className="placeholder:text-[#FF69B4] mx-2"
                   />
                 </div>
@@ -302,7 +302,7 @@ export default function Home() {
                 <div className="flex-4">
                   <input
                     type="text"
-                    placeholder="한국예술종합학교"
+                    placeholder="하버드대학교"
                     className="placeholder:text-[#FF69B4] mx-2"
                   />
                 </div>
@@ -367,7 +367,7 @@ export default function Home() {
               <p>
                 <textarea
                   placeholder="바나니킥은 2000년대 초반 인터넷 밈 문화와 K-하이틴 감성을 기반으로 등장한 슈퍼스타로, 그의 음악은 싸이월드 BGM으로 쓰였을 법한 복고적인 신스팝과 시티팝, 그리고 최근 유행하는 하이퍼팝 요소들이 결합된 독특한 스타일을 지니며, 대표곡인 ‘노란맛’에서는 경쾌한 리듬과 과장된 효과음, 그리고 바나니킥 특유의 나른하면서도 유쾌한 보컬 톤이 어우러져 듣는 이로 하여금 일상에서 벗어난 일종의 가상현실적 쾌감을 선사하는 것이 특징이다."
-                  className="placeholder:text-[#FF69B4] min-h-40 w-full"
+                  className="placeholder:text-[#FF69B4] h-auto min-h-40 w-full"
                 />
               </p>
             </li>
@@ -378,38 +378,33 @@ export default function Home() {
 
               <ul>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
+                  <textarea
                     placeholder="2020년 8월: 첫 티저 영상 공개, 정체 불명 캐릭터로 입소문을 타기 시작함."
-                    className="placeholder:text-[#FF69B4] w-full"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
+                  <textarea
                     placeholder="2021년 1월: 싱글 ‘노란맛’으로 정식 데뷔. 유튜브 조회수 1,000만 돌파."
-                    className="placeholder:text-[#FF69B4] w-full"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
+                  <textarea
                     placeholder="2022년: 첫 미니 앨범 《Peel Me Now》 발매, ‘K-아이돌 가상 유닛’ 트렌드의 선두주자라는 평가를 받음."
-                    className="placeholder:text-[#FF69B4] w-full"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
+                  <textarea
                     placeholder="2023년: 자체 제작 애니메이션 〈바나니킥 어드벤처〉 방영. "
-                    className="placeholder:text-[#FF69B4] w-full"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
+                  <textarea
                     placeholder="2024년: 글로벌 NFT 팬클럽 플랫폼 론칭, 해외 팬덤 급속 성장."
-                    className="placeholder:text-[#FF69B4] w-full"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
               </ul>
@@ -426,25 +421,22 @@ export default function Home() {
               </p>
               <ul>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
-                    placeholder="바나니킥 (Banani Kick) – 보컬, 콘셉트 총괄"
-                    className="placeholder:text-[#FF69B4] w-full"
+                  <textarea
+                    placeholder="바나니킥 (Banani Kick) – 콘셉트 총괄"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
-                    placeholder="DJ 무즈 (DJ M00Z) – 샘플링 & 라이브 믹스"
-                    className="placeholder:text-[#FF69B4] w-full"
+                  <textarea
+                    placeholder="DJ 웅 (DJ W) – 샘플링 & 라이브 믹스"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
-              
+
                 <li className="list-disc ml-8">
-                  <input
-                    type="text"
-                    placeholder="퍼포머 ‘치키’ (Chiki) – 동반자이자 무대 안무 담당, 원숭이 캐릭터"
-                    className="placeholder:text-[#FF69B4] w-full"
+                  <textarea
+                    placeholder="퍼포머 양나 (yang) – 동반자이자 보컬, 댄서"
+                    className="align-top placeholder:text-[#FF69B4] w-full"
                   />
                 </li>
               </ul>
@@ -456,7 +448,7 @@ export default function Home() {
                 </h4>
                 <p>
                   <textarea
-                    placeholder="신맛이 (Shinmat-i) – 데뷔 초 라이브 키보디스트, 2022년 탈퇴"
+                    placeholder="머머 (Mm-i) – 데뷔 초 라이브 키보디스트, 2022년 탈퇴"
                     className="placeholder:text-[#FF69B4] w-full"
                   />
                 </p>
@@ -672,13 +664,13 @@ export default function Home() {
 
         <div>
           <div>
-            문의{" "}
+            문의{' '}
             <a href="mailto:ajangeunajang@gmail.com?subject=은아의 발작룰렛 관련 문의 사항&body=안녕하세요,">
               ajangeunajang@gmail.com
             </a>
           </div>
           <div>
-            인스타그램{" "}
+            인스타그램{' '}
             <a href="https://www.instagram.com/ajangeunajang" target="_blank">
               @ajangeunajang
             </a>
